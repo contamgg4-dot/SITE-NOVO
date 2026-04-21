@@ -3,194 +3,212 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARANHAS HACKERS</title>
+<title>AMAIA MODS</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
-
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #000000, #0d0d0d);
-  color: white;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-/* NAV */
+body {
+    background: linear-gradient(180deg, #000, #0a0a0a);
+    color: white;
+}
+
+/* NAVBAR */
 nav {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 15px;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0,255,200,0.2);
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 15px;
+    background: #000;
+    border-bottom: 1px solid #00ffcc33;
 }
 
 nav a {
-  color: #00ffc8;
-  text-decoration: none;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* SECTIONS */
-.section {
-  display: none;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.active {
-  display: block;
+    color: #00ffcc;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 /* HERO */
 .hero {
-  max-width: 500px;
-  margin: auto;
-  padding: 30px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 0 40px rgba(0,255,200,0.15);
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.box {
+    background: #111;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px #00ffcc22;
+}
+
+.title {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    margin: 15px 0;
+    font-size: 20px;
+    color: #00ffcc;
+}
+
+.desc {
+    color: #aaa;
+    margin-top: 10px;
 }
 
 /* BOTÕES */
 .btn {
-  margin: 10px;
-  padding: 14px 25px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 15px;
+    padding: 12px 25px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 10px;
+    display: inline-block;
+    transition: 0.3s;
 }
 
-.discord { background: #5865F2; color: white; }
-.whatsapp { background: #25D366; color: white; }
-.instagram { background: #E1306C; color: white; }
+.whats {
+    background: #25D366;
+    color: black;
+}
+
+.dc {
+    background: #5865F2;
+    color: white;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* PLANOS */
+.planos {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #111;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #00ffcc22;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px #00ffcc55;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 22px;
+    margin: 10px 0;
+    color: #00ffcc;
+}
+
+/* DESTAQUE */
+.popular {
+    border: 1px solid #00ffcc;
+}
 
 /* FRASE */
 .frase {
-  margin-top: 60px;
-  font-size: 20px;
+    text-align: center;
+    padding: 40px;
+    color: #aaa;
 }
 
-.frase strong {
-  color: #00ffc8;
-}
-
-/* NOTIFICAÇÃO */
-#notificacao {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(0,0,0,0.8);
-  padding: 12px 18px;
-  border-radius: 10px;
-  font-size: 14px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.5s;
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #000;
+    font-size: 14px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
 <nav>
-  <a onclick="show('home')">Home</a>
-  <a onclick="show('suporte')">Suporte</a>
-  <a onclick="show('contato')">Contato</a>
+    <a href="#">Home</a>
+    <a href="#">Planos</a>
+    <a href="#">Contato</a>
 </nav>
 
-<div id="home" class="section active">
-  <div class="hero">
-    <h1>🕷️ ARANHAS HACKERS 🕸️</h1>
-    <h2>🔥 Melhor vendedor de DRIP Client 🔥</h2>
+<section class="hero">
+    <div class="box">
+        <div class="title">⚡ AMAIA MODS ⚡</div>
+        <div class="subtitle">🔥 A melhor vendedora de DRIP Client 🔥</div>
+        <div class="desc">Atendimento rápido • Seguro • Confiável 💎</div>
 
-    <button class="btn discord" onclick="window.open('https://discord.gg/766J2wFsC')">
-      Discord
-    </button>
+        <a href="https://discord.gg/EsCg8fQ8g" class="btn dc" target="_blank">Discord</a>
+        <a href="https://wa.me/5598992288376" class="btn whats" target="_blank">WhatsApp</a>
+    </div>
+</section>
 
-    <button class="btn whatsapp" onclick="whats()">
-      WhatsApp
-    </button>
-  </div>
+<section class="planos">
+    <h2>💎 Planos Disponíveis</h2>
+    <br>
 
-  <div class="frase">
-    <strong>Venha fazer parte</strong><br>
-    "Tudo posso naquele que me fortalece."
-  </div>
+    <div class="grid">
+
+        <div class="card">
+            <h3>1 DIA</h3>
+            <p>Acesso básico</p>
+            <div class="price">R$ 12,00</div>
+            <a href="https://wa.me/5598992288376?text=Quero%20comprar%201%20Dia" class="btn whats">Comprar</a>
+        </div>
+
+        <div class="card">
+            <h3>3 DIAS</h3>
+            <p>Plano curto</p>
+            <div class="price">R$ 24,00</div>
+            <a href="https://wa.me/5598992288376?text=Quero%20comprar%203%20Dias" class="btn whats">Comprar</a>
+        </div>
+
+        <div class="card popular">
+            <h3>7 DIAS 🔥</h3>
+            <p>Mais popular</p>
+            <div class="price">R$ 36,50</div>
+            <a href="https://wa.me/5598992288376?text=Quero%20comprar%207%20Dias" class="btn whats">Comprar</a>
+        </div>
+
+        <div class="card">
+            <h3>30 DIAS</h3>
+            <p>Plano completo</p>
+            <div class="price">R$ 90,00</div>
+            <a href="https://wa.me/5598992288376?text=Quero%20comprar%2030%20Dias" class="btn whats">Comprar</a>
+        </div>
+
+    </div>
+</section>
+
+<div class="frase">
+    <h3>Venha fazer parte</h3>
+    <p>"Tudo posso naquele que me fortalece."</p>
 </div>
 
-<div id="suporte" class="section">
-  <div class="hero">
-    <h1>📞 Suporte</h1>
-
-    <button class="btn whatsapp" onclick="whats()">WhatsApp</button>
-
-    <button class="btn instagram"
-      onclick="window.open('https://www.instagram.com/wz__pedroxzx?igsh=YzVpbzNrZ2s4bmlr')">
-      Instagram
-    </button>
-  </div>
-</div>
-
-<div id="contato" class="section">
-  <div class="hero">
-    <h1>📲 Contato</h1>
-    <button class="btn whatsapp" onclick="whats()">Falar agora</button>
-  </div>
-</div>
-
-<!-- NOTIFICAÇÃO -->
-<div id="notificacao"></div>
-
-<script>
-function show(sec) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById(sec).classList.add('active');
-}
-
-function whats() {
-  let num = "5512991439382";
-  let msg = "Suporte - ARANHAS HACKERS 🕷️🕸️";
-  window.open("https://wa.me/" + num + "?text=" + encodeURIComponent(msg));
-}
-
-/* NOMES */
-const nomes = [
-"Lucas","Pedro","João","Matheus","Gabriel","Rafael","Bruno","Felipe","Carlos",
-"Henrique","Gustavo","Vinicius","Eduardo","André","Thiago","Diego","Leonardo",
-"Caio","Daniel","Samuel","Arthur","Miguel","Davi","Enzo","Nicolas","Vitor"
-];
-
-/* PLANOS */
-const planos = [
-"Key 1 dia",
-"Key 7 dias",
-"Key 14 dias",
-"Key 30 dias"
-];
-
-function mostrarNotificacao() {
-  const box = document.getElementById("notificacao");
-
-  let nome = nomes[Math.floor(Math.random() * nomes.length)];
-  let plano = planos[Math.floor(Math.random() * planos.length)];
-
-  box.innerText = nome + " comprou " + plano;
-  box.style.opacity = 1;
-  box.style.transform = "translateY(0)";
-
-  setTimeout(() => {
-    box.style.opacity = 0;
-    box.style.transform = "translateY(20px)";
-  }, 3000);
-}
-
-setInterval(mostrarNotificacao, 4000);
-</script>
+<footer>
+    © 2026 AMAIA MODS
+</footer>
 
 </body>
 </html>
