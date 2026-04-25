@@ -1,192 +1,214 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AMAIA MODS</title>
+<title>Aranha Store</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
 body {
-    background: linear-gradient(180deg, #000, #0a0a0a);
-    color: white;
+  margin: 0;
+  font-family: Arial;
+  background: #05070d;
+  color: white;
+  padding-bottom: 120px;
 }
 
-/* HERO */
-.hero {
-    text-align: center;
-    padding: 50px 20px;
+/* TELAS */
+.tela { display: none; }
+.ativa { display: block; }
+
+/* TOPO */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: #0b0f1a;
 }
 
-.box {
-    background: #111;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 0 30px #00ffcc22;
+.logo {
+  color: #00aaff;
+  font-weight: bold;
 }
 
-.title {
-    font-size: 32px;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    margin: 15px 0;
-    font-size: 20px;
-    color: #00ffcc;
-}
-
-.desc {
-    color: #aaa;
-    margin-top: 10px;
-}
-
-/* BOTÕES */
-.btn {
-    padding: 12px 25px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 10px;
-    display: inline-block;
-    transition: 0.3s;
-}
-
-.whats {
-    background: #25D366;
-    color: black;
-}
-
-.dc {
-    background: #5865F2;
-    color: white;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-}
-
-/* PLANOS */
-.planos {
-    padding: 50px 20px;
-    text-align: center;
-}
+/* LOJA */
+.container { padding: 15px; }
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 
 .card {
-    background: #111;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px #00ffcc22;
-    transition: 0.3s;
+  background: #0b0f1a;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 25px #00ffcc55;
+.card img { width: 100%; }
+
+.card-body { padding: 10px; }
+
+.preco-antigo {
+  text-decoration: line-through;
+  color: #888;
 }
 
-.card h3 {
-    margin-bottom: 10px;
+.preco {
+  color: #00ffcc;
 }
 
-.price {
-    font-size: 22px;
-    margin: 10px 0;
-    color: #00ffcc;
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: white;
+  border: none;
+  border-radius: 10px;
+  margin-top: 5px;
+  cursor: pointer;
 }
 
-/* DESTAQUE */
-.popular {
-    border: 1px solid #00ffcc;
+/* PAGAMENTO */
+.pagamento {
+  text-align: center;
+  padding: 20px;
 }
 
-/* FRASE */
-.frase {
-    text-align: center;
-    padding: 40px;
-    color: #aaa;
+/* FOOTER BOTÕES GRANDES */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  background: #05070d;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #000;
-    font-size: 14px;
+/* BOTÃO WHATS */
+.btn-whats {
+  display: block;
+  text-align: center;
+  padding: 15px;
+  background: linear-gradient(90deg, #25d366, #1ebe5d);
+  color: white;
+  font-weight: bold;
+  border-radius: 15px;
+  text-decoration: none;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+/* BOTÃO INSTAGRAM */
+.btn-insta {
+  display: block;
+  text-align: center;
+  padding: 15px;
+  background: linear-gradient(90deg, #ff4d4d, #ff00cc);
+  color: white;
+  font-weight: bold;
+  border-radius: 15px;
+  text-decoration: none;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
 </style>
-
 </head>
+
 <body>
 
-<section class="hero">
-    <div class="box">
-        <div class="title">⚡ AMAIA MODS ⚡</div>
-        <div class="subtitle">🔥 A melhor vendedora de DRIP Client 🔥</div>
-        <div class="desc">Atendimento rápido • Seguro • Confiável 💎</div>
+<header>
+  <div class="logo">🕷️ ARANHA STORE</div>
+</header>
 
-        <a href="https://discord.gg/EsCg8fQ8g" class="btn dc" target="_blank">Discord</a>
-        <a href="https://wa.me/5598992288376" class="btn whats" target="_blank">WhatsApp</a>
-    </div>
-</section>
-
-<section class="planos">
-    <h2>💎 Planos Disponíveis</h2>
-    <br>
-
+<!-- LOJA -->
+<div id="loja" class="tela ativa">
+  <div class="container">
     <div class="grid">
 
-        <div class="card">
-            <h3>1 DIA</h3>
-            <p>Acesso básico</p>
-            <div class="price">R$ 12,00</div>
-            <a href="https://wa.me/5598992288376?text=Quero%20comprar%201%20Dia" class="btn whats">Comprar</a>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x150?text=Online">
+        <div class="card-body">
+          <div>Auxílio Online</div>
+          <div class="preco-antigo">R$ 25</div>
+          <div class="preco">R$ 9,99</div>
+          <button class="btn" onclick="abrirPagamento('Auxílio Online', 9.99)">Comprar</button>
         </div>
+      </div>
 
-        <div class="card">
-            <h3>3 DIAS</h3>
-            <p>Plano curto</p>
-            <div class="price">R$ 24,00</div>
-            <a href="https://wa.me/5598992288376?text=Quero%20comprar%203%20Dias" class="btn whats">Comprar</a>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x150?text=Fixo">
+        <div class="card-body">
+          <div>Auxílio Fixo</div>
+          <div class="preco-antigo">R$ 30</div>
+          <div class="preco">R$ 10,99</div>
+          <button class="btn" onclick="abrirPagamento('Auxílio Fixo', 10.99)">Comprar</button>
         </div>
-
-        <div class="card popular">
-            <h3>7 DIAS 🔥</h3>
-            <p>Mais popular</p>
-            <div class="price">R$ 36,50</div>
-            <a href="https://wa.me/5598992288376?text=Quero%20comprar%207%20Dias" class="btn whats">Comprar</a>
-        </div>
-
-        <div class="card">
-            <h3>30 DIAS</h3>
-            <p>Plano completo</p>
-            <div class="price">R$ 90,00</div>
-            <a href="https://wa.me/5598992288376?text=Quero%20comprar%2030%20Dias" class="btn whats">Comprar</a>
-        </div>
+      </div>
 
     </div>
-</section>
-
-<div class="frase">
-    <h3>Venha fazer parte</h3>
-    <p>"Tudo posso naquele que me fortalece."</p>
+  </div>
 </div>
 
-<footer>
-    © 2026 AMAIA MODS
-</footer>
+<!-- PAGAMENTO -->
+<div id="pagamento" class="tela pagamento">
+  <h2 id="produtoNome"></h2>
+  <h3 id="valorProduto"></h3>
+
+  <p>Chave PIX:</p>
+  <strong>12 99143-9382</strong>
+
+  <div id="qrcode"></div>
+
+  <button class="btn" onclick="jaPaguei()">Já paguei</button>
+  <button class="btn" onclick="voltar()">Voltar</button>
+</div>
+
+<!-- BOTÕES GRANDES -->
+<div class="footer">
+  <a href="https://wa.me/5512991439382" class="btn-whats">
+    📱 FALAR NO WHATSAPP
+  </a>
+
+  <a href="https://www.instagram.com/_aranha_store_" class="btn-insta">
+    📸 ME SIGA NO INSTAGRAM
+  </a>
+</div>
+
+<script>
+let produtoSelecionado = "";
+
+function abrirPagamento(produto, valor) {
+  produtoSelecionado = produto;
+
+  document.getElementById("loja").classList.remove("ativa");
+  document.getElementById("pagamento").classList.add("ativa");
+
+  document.getElementById("produtoNome").innerText = produto;
+  document.getElementById("valorProduto").innerText = "R$ " + valor;
+
+  document.getElementById("qrcode").innerHTML = "";
+
+  let payload = "PIX|12991439382|" + valor + "|" + produto;
+
+  new QRCode(document.getElementById("qrcode"), {
+    text: payload,
+    width: 200,
+    height: 200
+  });
+}
+
+function voltar() {
+  document.getElementById("pagamento").classList.remove("ativa");
+  document.getElementById("loja").classList.add("ativa");
+}
+
+function jaPaguei() {
+  let msg = "Já paguei o PIX do " + produtoSelecionado + " 💸%0A%0ASegue meu comprovante 👇";
+  window.location.href = "https://wa.me/5512991439382?text=" + msg;
+}
+</script>
 
 </body>
 </html>
