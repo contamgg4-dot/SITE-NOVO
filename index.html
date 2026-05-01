@@ -8,152 +8,334 @@
 <style>
 body{
     margin:0;
-    font-family: Arial;
+    font-family:Arial;
     background:#0b0b0b;
     color:white;
 }
 
-/* TOPO */
+/* LOGIN */
+#login{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+/* INPUT */
+input{
+    padding:10px;
+    margin:5px;
+    border:none;
+    border-radius:5px;
+}
+
+/* BOTÃO */
+.btn{
+    padding:12px;
+    font-size:15px;
+    background:#39ff14;
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+/* APP */
+#app{
+    display:none;
+}
+
+/* HEADER */
 .header{
     background:#111;
     padding:15px;
     text-align:center;
     color:#39ff14;
     font-weight:bold;
-    font-size:20px;
+}
+
+/* TELAS */
+.tela{
+    display:none;
+    padding:10px;
+}
+
+.tela.ativa{
+    display:block;
 }
 
 /* GRID */
 .grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:10px;
-    padding:10px;
+    gap:12px;
 }
 
-/* PRODUTO */
+/* PRODUTOS */
 .prod{
     background:#111;
-    padding:15px;
-    border-radius:12px;
-    box-shadow:0 0 10px rgba(0,255,0,0.2);
+    padding:20px;
+    border-radius:15px;
+    min-height:140px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
 
 .prod h3{
-    margin:0;
-    font-size:16px;
+    font-size:18px;
 }
 
 .preco{
+    font-size:16px;
     color:#39ff14;
-    font-weight:bold;
-    margin:5px 0;
 }
 
-/* BOTÃO */
-.btn{
+/* MENU */
+.menu{
+    position:fixed;
+    bottom:0;
     width:100%;
-    padding:10px;
+    background:#0b0b0b;
+    display:flex;
+    justify-content:space-around;
+    padding:12px 0;
+    border-top:1px solid #222;
+}
+
+.menu button{
+    background:none;
+    border:none;
+    color:#39ff14;
+    font-size:20px;
+}
+
+/* BOTÃO CARRINHO */
+.carrinhoBtn{
+    position:fixed;
+    bottom:80px;
+    right:20px;
     background:#39ff14;
     color:black;
-    border:none;
-    border-radius:8px;
-    font-weight:bold;
+    padding:18px;
+    border-radius:50%;
+    font-size:18px;
+    box-shadow:0 0 15px #39ff14;
 }
 
 /* CARRINHO */
 .carrinho{
     position:fixed;
-    bottom:0;
-    width:100%;
+    right:-100%;
+    top:0;
+    width:80%;
+    height:100%;
     background:#111;
-    padding:10px;
-    box-shadow:0 -2px 10px black;
+    padding:15px;
+    transition:0.3s;
 }
 
-/* PIX */
-.pix{
-    color:#39ff14;
-    font-weight:bold;
+.carrinho.ativo{
+    right:0;
+}
+
+.itemCarrinho{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid #333;
+    padding:5px 0;
+}
+
+.remover{
+    color:red;
+    cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-🛒 TOXIC STORE
+<!-- LOGIN -->
+<div id="login">
+<h2>🔐 Login</h2>
+<input id="user" placeholder="Usuário">
+<input id="pass" type="password" placeholder="Senha">
+<button class="btn" onclick="entrar()">Entrar</button>
+<p onclick="criarConta()">Criar conta</p>
 </div>
 
+<!-- APP -->
+<div id="app">
+
+<div class="header">🔥 TOXIC STORE 🔥</div>
+
+<!-- TELAS -->
+<div id="home" class="tela ativa">
+<h3>Bem-vindo 👋</h3>
+<p>⚡ Entrega rápida</p>
+<p>🔒 Pagamento via Pix</p>
+</div>
+
+<div id="produtos" class="tela">
 <div class="grid">
 
 <div class="prod">
 <h3>1K Seguidores</h3>
-<div class="preco">R$ 6</div>
-<button class="btn" onclick="comprar('1K Seguidores - R$6')">Comprar</button>
+<p class="preco">R$ 6</p>
+<button class="btn" onclick="add('1K Seguidores',6)">Adicionar</button>
 </div>
 
 <div class="prod">
 <h3>2K Seguidores</h3>
-<div class="preco">R$ 8</div>
-<button class="btn" onclick="comprar('2K Seguidores - R$8')">Comprar</button>
+<p class="preco">R$ 8</p>
+<button class="btn" onclick="add('2K Seguidores',8)">Adicionar</button>
+</div>
+
+<div class="prod">
+<h3>3K Seguidores</h3>
+<p class="preco">R$ 11</p>
+<button class="btn" onclick="add('3K Seguidores',11)">Adicionar</button>
 </div>
 
 <div class="prod">
 <h3>5K Seguidores</h3>
-<div class="preco">R$ 19</div>
-<button class="btn" onclick="comprar('5K Seguidores - R$19')">Comprar</button>
+<p class="preco">R$ 19</p>
+<button class="btn" onclick="add('5K Seguidores',19)">Adicionar</button>
+</div>
+
+<div class="prod">
+<h3>10K Seguidores</h3>
+<p class="preco">R$ 40</p>
+<button class="btn" onclick="add('10K Seguidores',40)">Adicionar</button>
+</div>
+
+<div class="prod">
+<h3>Auxílio Free Fire</h3>
+<p class="preco">R$ 15</p>
+<button class="btn" onclick="add('Auxílio Free Fire',15)">Adicionar</button>
 </div>
 
 <div class="prod">
 <h3>Auxílio Coringa</h3>
-<div class="preco">R$ 15</div>
-<button class="btn" onclick="comprar('Auxílio Coringa - R$15')">Comprar</button>
+<p class="preco">R$ 15</p>
+<button class="btn" onclick="add('Auxílio Coringa',15)">Adicionar</button>
 </div>
 
 <div class="prod">
 <h3>Auxílio Online</h3>
-<div class="preco">R$ 10</div>
-<button class="btn" onclick="comprar('Auxílio Online - R$10')">Comprar</button>
+<p class="preco">R$ 10</p>
+<button class="btn" onclick="add('Auxílio Online',10)">Adicionar</button>
 </div>
 
 <div class="prod">
 <h3>Holograma + Antena</h3>
-<div class="preco">R$ 8,90</div>
-<button class="btn" onclick="comprar('Holograma + Antena - R$8,90')">Comprar</button>
+<p class="preco">R$ 8,90</p>
+<button class="btn" onclick="add('Holograma + Antena',8.9)">Adicionar</button>
+</div>
+
+</div>
+</div>
+
+<div id="conta" class="tela">
+<h3>👤 Sua conta</h3>
+<p id="nomeUser"></p>
+<button class="btn" onclick="logout()">Sair</button>
+</div>
+
+<!-- MENU -->
+<div class="menu">
+<button onclick="trocar('home')">🏠</button>
+<button onclick="trocar('produtos')">🛒</button>
+<button onclick="trocar('conta')">👤</button>
 </div>
 
 </div>
 
+<!-- BOTÃO CARRINHO -->
+<div class="carrinhoBtn" onclick="toggleCarrinho()">
+🛒 <span id="qtd">0</span>
+</div>
+
+<!-- CARRINHO -->
 <div class="carrinho">
-<p id="item">Nenhum item selecionado</p>
-
-<p>💳 Pix: <span class="pix">+5512991439382</span></p>
-
-<button class="btn" onclick="finalizar()">
-📲 Finalizar no WhatsApp
-</button>
+<h3>🛒 Carrinho</h3>
+<div id="lista"></div>
+<p>Total: R$ <span id="total">0</span></p>
+<button class="btn" onclick="finalizar()">Finalizar</button>
 </div>
 
 <script>
-let pedido = "";
+let carrinho=[];
 
-function comprar(item){
-    pedido = item;
-    document.getElementById("item").innerHTML = "🛒 " + item;
+/* LOGIN */
+function entrar(){
+    let u=user.value;
+    let p=pass.value;
+
+    if(localStorage.getItem("user")==u && localStorage.getItem("pass")==p){
+        login.style.display="none";
+        app.style.display="block";
+        nomeUser.innerText="Usuário: "+u;
+    } else alert("Erro no login");
+}
+
+function criarConta(){
+    localStorage.setItem("user",user.value);
+    localStorage.setItem("pass",pass.value);
+    alert("Conta criada!");
+}
+
+/* NAV */
+function trocar(t){
+    document.querySelectorAll(".tela").forEach(e=>e.classList.remove("ativa"));
+    document.getElementById(t).classList.add("ativa");
+}
+
+/* CARRINHO */
+function add(n,p){
+    carrinho.push({n,p});
+    atualizar();
+}
+
+function atualizar(){
+    qtd.innerText=carrinho.length;
+    let total=0, html="";
+
+    carrinho.forEach((i,index)=>{
+        html+=`<div class="itemCarrinho">
+        ${i.n} - R$ ${i.p}
+        <span class="remover" onclick="remover(${index})">❌</span>
+        </div>`;
+        total+=i.p;
+    });
+
+    lista.innerHTML=html;
+    document.getElementById("total").innerText=total.toFixed(2);
+}
+
+function remover(i){
+    carrinho.splice(i,1);
+    atualizar();
+}
+
+function toggleCarrinho(){
+    document.querySelector(".carrinho").classList.toggle("ativo");
 }
 
 function finalizar(){
-    if(pedido == ""){
-        alert("Escolha um produto!");
-        return;
-    }
+    let msg="🛒 Pedido:\n";
+    carrinho.forEach(i=>msg+=i.n+"\n");
 
-    let msg = "Quero comprar: " + pedido;
-    let url = "https://wa.me/5512991439382?text=" + encodeURIComponent(msg);
-    window.open(url);
+    window.open("https://wa.me/5512991439382?text="+encodeURIComponent(msg));
+}
+
+function logout(){
+    location.reload();
 }
 </script>
 
 </body>
-</html> 
+</html>
